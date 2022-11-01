@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model DTN4.Models.Customer
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Order> DanhSachDonHang = ViewBag.DonHang;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 sidebar-account">
+            <div class="AccountSidebar">
+                <h4 class="AccountTitle titleSidebar">Tài khoản của bạn</h4>
+                <div class="AccountContent">
+                    <div class="AccountList">
+                        <ul class="list-unstyled">
+                            @*<li class="current"><a href="/account">Thông tin tài khoản</a></li>
+                            <li><a href="/account/addresses">Danh sách địa chỉ</a></li>
+                            <li class="last"><a href="/account/logout">Đăng xuất</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <div class="row">
+                <div class="col-xs-12" id="customer_sidebar">
+                    <p class="title-detail"><h2>Thông tin tài khoản</h2></p>
+
+                    <h2 class="name_account">@Model.CustomName</h2>
+                    <p>Email: @Model.Email</p>
+                    <p>Số điện thoại:@Model.Phone</p>
+                    <p>Địa chỉ: @Model.Address</p>
+
+
+                    <div class="@Model.Location">
+
+                        <p></p>
+
+                        <p></p>
+
+                        <p> Vietnam</p>
+                        <p></p>
+
+                        <a id="view_address" href="/account/addresses">Xem địa chỉ</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 customer-table-wrap" id="customer_orders">
+                    <div class="customer_order customer-table-bg col-12">
+
+                        <p><h2>Danh sách sản phẩm</h2></p>
+                        @await Html.PartialAsync("_DonHangPartialView",DanhSachDonHang)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+

@@ -1,0 +1,70 @@
+﻿@using PagedList.Core.Mvc
+@*@model PagedList.Core.IPagedList<DTN4.Models.Category>*@
+
+@{
+    //int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách Danh mục"/*+ CurrentPage*/;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Danh sách Danh mục sản phẩm</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Danh sách sản phẩm@*: page @CurrentPage*@
+    </ol>
+    
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mô tả</th>
+                    <th>Tiêu đề</th>
+                    <th>Tên gọi</th>
+
+                    <th>#</th>
+                </tr>
+            </thead>
+            <a class="btn btn-primary" asp-controller="adminCategories" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm sản phẩm</span></a>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CatId</td>
+                            <td>@item.CatName</td>
+                            <td>@item.Desciption</td>
+                            <td>@item.Title</td>
+                            <td>@item.Alias</td>
+                            @*<td>@item.Cat.CatName.ToString("")</td>*@
+                            @*<td>@item.UntiStock</td>*@
+                            @*<td>
+                                @if (@item.Published.Value > 0)
+                                {
+                                    <div>Còn trong kho</div>
+                                }
+                                else
+                                {
+                                    <div>Hết hàng</div>
+                                }
+                            </td>*@
+                            <td>
+                                <a asp-area="Admin" asp-controller="adminCategories" asp-action="Edit" asp-route-id="@item.CatId" class="btn btn-secondary">Edit</a> |
+                                <a asp-area="Admin" asp-controller="adminCategories" asp-action="Details" asp-route-id="@item.CatId" class="btn btn-primary">Details</a> |
+                                <a asp-area="Admin" asp-controller="adminCategories" asp-action="Delete" asp-route-id="@item.CatId" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+        <div aria-label="Page navigation exemple">
+            <ul class="pagination">
+                <page class="page-container" list="@Model" asp-area="Admin" asp-controller="adminCategories" asp-action="Index"/>
+            </ul>
+        </div>
+    </div>
+</div>

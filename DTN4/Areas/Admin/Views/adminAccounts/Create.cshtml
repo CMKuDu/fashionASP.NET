@@ -1,0 +1,88 @@
+﻿@model DTN4.Models.Account
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h4>Account</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <h1>Create</h1>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="font-weight-semibold" for="accountPhone">So dien thoai</label>
+                <input type="text" asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-semibold" for="accountEmail">Email</label>
+                <input type="text" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-semibold" for="accountPasswork">Mat khau</label>
+                <input type="text" asp-for="Passwork" class="form-control" />
+                <span asp-validation-for="Passwork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-semibold" for="accountSalt">Salt</label>
+                <input type="email" asp-for="Salt" class="form-control" />
+                <span asp-validation-for="Salt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-semibold" for="accountFullName">Ho va ten</label>
+                <input type="text" asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Active" class="control-label">Trang thai</label>
+                <input type="text" asp-for="Active" class="form-control" />
+                <span asp-validation-for="Active" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateDate" class="control-label">Ngay tao</label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastLogin" class="control-label">Lan dang nhap cuoi</label>
+                <input asp-for="LastLogin" class="form-control" />
+                <span asp-validation-for="LastLogin" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label">Chuc vu</label>
+                <label style="margin: 17px;">
+                    <select class="dataTable-selector" asp-for="RoleId" asp-items="ViewBag.RoleId">
+                        <option value="" disabled selected>Chọn chuc vu</option>
+                    </select>
+                </label>
+                @*<select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>*@
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                        Agree to terms and conditions
+                    </label>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+

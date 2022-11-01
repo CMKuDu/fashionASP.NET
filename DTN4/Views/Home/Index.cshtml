@@ -1,0 +1,531 @@
+﻿@using PagedList.Core.Mvc
+@*@model PagedList.Core.IPagedList<DTN4.Models.Product>*@
+@model DTN4.ModelViews.HomeVM
+
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Product> allProduct = ViewBag.AllProducts;
+}
+
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all" style="background: black;">
+                        <i class="fa fa-bars"></i>
+                        <span>All PRODUCT</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">All items</a></li>
+                        <li><a href="#">Tee</a></li>
+                        <li><a href="#">Jacket</a></li>
+                        <li><a href="#">Shirts</a></li>
+                        <li><a href="#">Bottom</a></li>
+                        <li><a href="#">Sweater</a></li>
+                        <li><a href="#">Cap</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Hoodie</a></li>
+                        <li><a href="#">Backpack</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+
+                            <input type="text" class="fa-solid fa-magnifying-glass" placeholder="Tìm sản phẩm">
+                            <button type="submit" class="site-btn" style="background: black;">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>0386 754 902</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="https://static.vecteezy.com/system/resources/previews/003/436/538/non_2x/watercolor-galaxy-background-free-vector.jpg">
+                    <div class="hero__text">
+                        <span style="font-size: 35px">FASHION</span>
+                        <h2 style="font-size: 50px">ROSS <br />100% Reputation</h2>
+                        <p style="color: black;">Free Pickup and Delivery Available</p>
+                        <a asp-controller="Product" asp-action="Index" class="primary-btn" style="background: black;">SHOP NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="https://cf.shopee.vn/file/28d11974d7901d151277509d593cf760">
+                        <h5><a href="#">Hoodie</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="https://localbrand.vn/wp-content/uploads/2020/08/ao-thun-trang-quan-sot-local-brand-missout.jpg">
+                        <h5><a href="#">Tee</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="https://hidanz.com/wp-content/uploads/2021/05/jacket-local-brand-1.jpg">
+                        <h5><a href="#">Jacket</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="https://localbrand.vn/wp-content/uploads/2020/08/ao-phong-trang-quan-ong-rong-nam-nu-localbrand.jpg">
+                        <h5><a href="#">Botttom</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="https://bizweb.dktcdn.net/100/287/440/products/87450514-3070435439647146-4700828416843186176-o-jpg-nc-cat-106-nc-sid-a26aad-nc-ohc-n4m9jyu17gqax-o122j-nc-ht-scontent-fdad3-1-fna-oh-75425060025b28393b962a1d73f37b9b-oe-5f426099.jpg?v=1595663897697">
+                        <h5><a href="#">Cap</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Featured Product</h2>
+                </div>
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".oranges">Tee</li>
+                        <li data-filter=".fresh-meat">Jacket</li>
+                        <li data-filter=".vegetables">Bottom</li>
+                        <li data-filter=".fastfood">Hoodie</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="https://product.hstatic.net/1000357687/product/1_8929ebaffebb466399256203b883d791_master.jpg">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Now Jacket</a></h6>
+                        <h5>200.000VDN</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="https://product.hstatic.net/1000357687/product/mat_truoc_f8ccc697d18e4489ac8239844dbe3b45_master.jpg">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">hades Hoodie</a></h6>
+                        <h5>200.000VDN</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="https://product.hstatic.net/1000357687/product/dong_mau_lac_hongartboard_16_c96bd9295e0b422f8065c2e15846407f_master.jpg">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Now Black Tee</a></h6>
+                        <h5>200.000VDN</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" data-setbg="https://product.hstatic.net/1000357687/product/dong_mau_lac_hong_au_co_trang_tay_ngan_copy_2artboard_5_5390efa7b3674e50bc5ca2a91395374c_master.jpg">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Now White Tee</a></h6>
+                        <h5>200.000VDN</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Featured Section End -->
+<!-- Banner Begin -->
+@*<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="img/banner/banner-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="img/banner/banner-2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<!-- Banner End -->
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+    <div class="container">
+
+        <div class="row">
+            @*@if (Model != null && Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <a href="#" class="latest-product__item">
+                        <div class="latest-product__item__pic">
+                            <img src="~/image/products/@item.Thumb" alt="@item.Title">
+                        </div>
+                        <div class="latest-product__item__text">
+                            <h6>@item.ProductName</h6>
+                            <span>@item.Price.Value.ToString("#,##0")VNĐ</span>
+
+                        </div>
+                    </a>
+                }
+            }*@
+            <!--Latest Products -->
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Latest Products</h4>
+
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/ao_monogram_den___tay_ngan__artboard_16_2ce1d9c33578437ebc683a6db7c664fd_master.jpg"
+                                         alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo thun tay ngắn Monogram</h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/ao_huynh_den_artboard_16_eb5702e4815545e3918d8491f15827de_master.jpg"
+                                         alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Hào sảng Huỳnh tộc -
+                                        The heritage of Huynh // Đen
+                                    </h6>
+                                    <span>200.00VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/ao_pham_denartboard_16_f3eac59427a2458f9ead32b908e9cb06_master.jpg"
+                                         alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Kiêu hùng Phạm gia -
+                                        The pride of Pham // Đen
+                                    </h6>
+                                    <span>200.00VND</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/dmlh_den_hong_tay_daiartboard_6_b2be975b11c94cefb915adc5cdefc61c_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo tay dài Dòng máu Lạc Hồng -
+                                        Âu Cơ // Đen
+                                    </h6>
+                                    <span>200.00VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/dmlh_den_hong_tay_daiartboard_6_b2be975b11c94cefb915adc5cdefc61c_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo tay dài Dòng máu Lạc Hồng - Âu Cơ // Đen</h6>
+                                    <span>200.00VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/dong_mau_lac_hongartboard_16_c96bd9295e0b422f8065c2e15846407f_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo tay ngắn Dòng máu Lạc Hồng -
+                                        Lạc Long Quân // Đen
+                                    </h6>
+                                    <span>200.00VND</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Top Rated Products -->
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Top Rated Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/1_8929ebaffebb466399256203b883d791_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo khoác công năng a.k.a
+                                        Functional Jacket - FJ:01
+                                    </h6>
+                                    <span>600.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/mat_ban_co_d5a8606014804ef79fcd7a10a44bdb6a_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo khoác Di sản Việt Nam | Bầu Cua</h6>
+                                    <span>600.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/mat_truoc_khoa_ngan_8702e659ef234f29bdd5bcfa5899a7ab_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo khoác thông gió a.k.a.
+                                        AIR-tech jacket AT:01
+                                    </h6>
+                                    <span>400.000VND</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/artboard_15.psbartboard_13_e8feffed7c4742da8a1b16eba369008d_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo khoác thông gió thế hệ 2 a.k.a.
+                                        Advanced AIR-tech jacket A.AT:01 // Đen
+                                    </h6>
+                                    <span>500.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/fullzippartboard_10.psbartboard_9_ef384a6030884728a95959290b36f961_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo khoác thông gió thế hệ 2 a.k.a.
+                                        Advanced AIR-tech jacket A.AT:02 // Đen
+                                    </h6>
+                                    <span>500.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/mat_truoc_khoa_dai_e6b5255388f84ab38517f2b993f55d3e_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo khoác thông gió a.k.a.
+                                        AIR-tech jacket AT:02
+                                    </h6>
+                                    <span>500.000VND</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Review Products -->
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Review Products</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/dmlh_xanh_trang_tay_dai_artboard_1_a99069048741417cb943256047e15a1f_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo tay dài Dòng máu Lạc Hồng -
+                                        Lạc Long Quân // Trắng
+                                    </h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/dmlh_tay_ngan_artboard_5_be9c2b4a15dc4110a6875bd280f5187a_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Áo tay ngắn Dòng máu Lạc Hồng -
+                                        Lạc Long Quân // Trắng
+                                    </h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/dmlh_trang_hong_tay_daiartboard_1_36aae7cadb424bfc900a9d9535efdfbf_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo tay dài Dòng máu Lạc Hồng - Âu Cơ // Trắng</h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/ao_pham_trangartboard_5_8994435e06054635a5ea235bd88e3042_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Kiêu hùng Phạm gia -
+                                        The pride of Pham // Trắng
+                                    </h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/ao_huynh_trangartboard_5_4c2c7d6e62fc46c7a94f5906b78d3826_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>
+                                        Hào sảng Huỳnh tộc -
+                                        The heritage of Huynh // Trắng
+                                    </h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="https://product.hstatic.net/1000357687/product/ao_monogram_trang___tay_dai__artboard_1_b2922541a1b143298e560ac8bed0b4a3_master.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo thun tay dài Monogram // Trắng</h6>
+                                    <span>200.000VND</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Product Section End -->
+<!-- Blog Section Begin -->
+@*<section class="from-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title from-blog__title">
+                        <h2>From The Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-1.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-2.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-3.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Visit the clean farm in the US</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+<!-- Blog Section End -->

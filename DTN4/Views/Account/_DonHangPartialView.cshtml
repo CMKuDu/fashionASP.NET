@@ -1,0 +1,111 @@
+﻿@model List<Order>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if (Model != null && Model.Count() > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>Order</th>
+                    <th>Ngày mua hàng</th>
+                    <th>Ngày Ship hàng</th>
+                    <th>Trạng thái đơn hàng</th>
+                    <th>Tổng tiền</th>
+
+                </tr>
+                @foreach (var item in Model)
+               {
+                   <tr>
+                       <td><a class="account-order-id" href="javacript:void(0)">#@item.OrderId</a></td>
+                       <td>@item.OrderDate</td>
+                       <td>@item.ShipDate</td>
+                       <td>@item.TransactStatus.Status</td>
+                       <td>@item.Money.ToString("#,##0")VND</td>
+                       <td>
+                           <a href="javacript:void(0)" class="btn btn-secondary btn-primary-hover"><span>Xem đơn hàng</span></a>
+                       </td>
+                   </tr>
+               }
+            </tbody>
+        </table>
+
+    </div>
+}
+else
+{   <td><p>Chưa có đơn hàng</p></td>
+    
+}
+@*<div class="table-wrap">
+					<table class="full">
+						<thead>
+							<tr>
+								<th>Đơn hàng</th>
+								<th>Ngày</th>
+								<th>Tình trạng thanh toán</th>
+								<th>Tình trạng vận chuyển</th>
+								<th>Tổng</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr>
+								<td><a href="/account/orders/613b3486f2cd4849aa684448eda3da99" title="">G-208833</a></td>
+								<td>06/21/2022 11:33:39</td>
+								<td>paid</td>
+								<td>fulfilled</td>
+								<td>1,047,000₫</td>
+							</tr>
+							
+							<tr>
+								<td><a href="/account/orders/d1fdeb548edc4ee79d0cf12c4fa61eaf" title="">G-208832</a></td>
+								<td>06/21/2022 11:29:13</td>
+								<td>pending</td>
+								<td>not fulfilled</td>
+								<td>1,075,000₫</td>
+							</tr>
+							
+							<tr>
+								<td><a href="/account/orders/abf1707fa93d46d5b37686dfb0f81877" title="">G-202813</a></td>
+								<td>04/25/2022 07:31:36</td>
+								<td>paid</td>
+								<td>fulfilled</td>
+								<td>839,000₫</td>
+							</tr>
+							
+							<tr>
+								<td><a href="/account/orders/ce9566ebdf6946f2867fb36efe6f5998" title="">G-197578</a></td>
+								<td>02/19/2022 11:59:51</td>
+								<td>paid</td>
+								<td>fulfilled</td>
+								<td>1,060,000₫</td>
+							</tr>
+							
+							<tr>
+								<td><a href="/account/orders/71fa665204e8418cbd481946581fe95e" title="">G-197576</a></td>
+								<td>02/19/2022 11:36:26</td>
+								<td>pending</td>
+								<td>not fulfilled</td>
+								<td>1,048,000₫</td>
+							</tr>
+							
+							<tr>
+								<td><a href="/account/orders/90c48104244d40c3ba5681248b4e0354" title="">G-185812</a></td>
+								<td>11/15/2021 09:06:38</td>
+								<td>paid</td>
+								<td>fulfilled</td>
+								<td>1,460,000₫</td>
+							</tr>
+							
+							<tr>
+								<td><a href="/account/orders/03fb4d6c917747d8b5b0b53ac684b09b" title="">G-185704</a></td>
+								<td>11/13/2021 21:11:04</td>
+								<td>pending</td>
+								<td>not fulfilled</td>
+								<td>1,493,000₫</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>*@

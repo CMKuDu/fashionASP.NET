@@ -1,0 +1,29 @@
+﻿@model DTN4.Models.Role
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <h1>Thông tin quyền truy cập</h1>
+    <hr />
+    <div class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </div>
+</div>
+<div style="margin: 95px;">
+    <a asp-action="Edit"class="btn btn-secondary" asp-route-id="@Model.RoleId">Edit</a> |
+    <a asp-action="Index"class="btn btn-primary">Back to List</a>
+</div>

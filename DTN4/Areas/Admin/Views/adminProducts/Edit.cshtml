@@ -1,0 +1,120 @@
+﻿@model DTN4.Models.Product
+
+@{
+    ViewData["Title"] = "Chinh sua san pham" + Model.ProductName;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<table class="table table-striped"> </table>*@
+
+<h4>Chinh sua sản phẩm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-controller="adminProducts" asp-action="Edit" asp-route-id="@Model.ProductId" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProductId" />
+            <input type="hidden" asp-for="Thumb" />
+            <input type="hidden" asp-for="DateCreate" />
+
+            <div class="form-group">
+                <label class="font-weight-semibold" for="productName" *@>Ten san pham</label>
+                <input type="text" asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDesc" class="control-label"></label>
+                <input asp-for="ShortDesc" class="form-control" />
+                <span asp-validation-for="ShortDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-semibold" for="productCat" *@>Ten danh muc</label>
+                <label style="margin: 17px;">
+                    <select class="dataTable-selector" asp-for="CatId" asp-items="ViewBag.DanhMuc">
+                        <option value="" disabled selected>Chọn danh muc</option>
+                    </select>
+                </label>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="font-weight-semibold" for="productPirce" @*asp-for="Price" class="control-label"*@>Gia ban</label>
+                    <input type="text" asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="font-weight-semibold" for="productPirce" @*asp-for="Price" class="control-label"*@>Discount</label>
+                    <input type="text" asp-for="Discount" class="form-control" />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-semibold" for="productThumb">Anh dai dien</label>
+                <input name="fThumb" type="file" class="form-control-file" asp-for="Thumb" />
+                <span asp-validation-for="Thumb" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="DateCreate" class="control-label">Ngay tao</label>
+                <input asp-for="DateCreate" class="form-control" />
+                <span asp-validation-for="DateCreate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label">Ngay chinh sua</label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            
+           @* <div class="form-group">
+                <label asp-for="HomeFlag" class="control-label"></label>
+                <input asp-for="HomeFlag" class="form-control" />
+                <span asp-validation-for="HomeFlag" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Active" class="control-label"></label>
+                <input asp-for="Active" class="form-control" />
+                <span asp-validation-for="Active" class="text-danger"></span>
+            </div>
+            
+            
+            <div class="form-group">
+                <label asp-for="Alias" class="control-label"></label>
+                <input asp-for="Alias" class="form-control" />
+                <span asp-validation-for="Alias" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="UntiStock" class="control-label"></label>
+                <input asp-for="UntiStock" class="form-control" />
+                <span asp-validation-for="UntiStock" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                        Agree to terms and conditions
+                    </label>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Chinh sua" class="btn btn-primary" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div style="margin: 23px;">
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+
+
+
+
+
+

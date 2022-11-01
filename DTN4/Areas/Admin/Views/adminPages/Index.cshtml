@@ -1,0 +1,67 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<DTN4.Models.Page>
+@{
+    ViewData["Title"] = "Danh sách Page";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Quản lý danh sách khách hàng</h1>
+    <ol class="breadcrumb mb-4">
+        <li asp-area="Admin" asp-controller="adminCustomers" asp-aciton="Index">Dashboard</li>
+        <li class="breadcrumb-item active">Danh sách Page @ViewBag.CurrentPage </li>
+        <li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Danh sách khách hàng
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Page Name</th>
+                        <th>Trạng thái</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <a class="btn btn-primary" asp-controller="adminPages" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm Page</span></a>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.PageId</td>
+                                <td>@item.PageName</td>
+                                <td>
+                                    @if (@item.Published == true)
+                                    {
+                                        <div>Public</div>
+                                    }
+                                    else
+                                    {
+                                        <div>Non-Public</div>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="adminPages" asp-action="Edit" asp-route-id="@item.PageId" class="btn btn-secondary">Edit</a> |
+                                    <a asp-area="Admin" asp-controller="adminPages" asp-action="Details" asp-route-id="@item.PageId" class="btn btn-primary">Details</a> |
+                                    <a asp-area="Admin" asp-controller="adminPages" asp-action="Delete" asp-route-id="@item.PageId" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <div aria-label="Page navigation exemple">
+                <ul class="pagination">
+                    <pager class="page-container" list="@Model" asp-area="Admin" asp-controller="adminPages" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

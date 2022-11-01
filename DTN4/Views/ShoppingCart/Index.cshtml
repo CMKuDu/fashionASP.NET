@@ -1,0 +1,226 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<DTN4.ModelViews.CartItem>
+@{
+    ViewData["Title"] = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all" style="background: black;">
+                        <i class="fa fa-bars"></i>
+                        <span>All departments</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">All items</a></li>
+                        <li><a href="#">Tee</a></li>
+                        <li><a href="#">Jacket</a></li>
+                        <li><a href="#">Shirts</a></li>
+                        <li><a href="#">Bottom</a></li>
+                        <li><a href="#">Sweater</a></li>
+                        <li><a href="#">Cap</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Hoodie</a></li>
+                        <li><a href="#">Backpack</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                All Categories
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="What do yo u need?">
+                            <button type="submit" class="site-btn" style="background: black;">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+03 86.754.902</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Shopping Cart</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./index.html">Home</a>
+                        <span>Shopping Cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count() == 0)
+                            {
+                                <center><h2>Không có sản phẩm</h2></center>
+
+                            }
+                            else
+                            {
+                                foreach (var item in Model)
+
+                                {
+                                    <tr>
+                                        <td class="shoping__cart__item" style="width: 270px;">
+                                            <img src="~/image/products/@item.product.Thumb" alt="@item.product.Title">
+                                            <h5>@item.product.ProductName</h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @item.product.Price.Value.ToString("#,##0")VND
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input data-mahh="@item.product.ProductId" data-dongia="@item.product.Price" class="cartItem cart-plus-minus-box" value="@item.amount" min="1" type="number">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            @(item.product.Price * item.amount)
+
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            <a asp-controller="ShoppingCart" asp-action="Remove" asp-route-id="@item.product.ProductId" class="icon_close"></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @*<div class="col-lg-12">
+            <div class="shoping__cart__btns">
+            <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+            <a href="#" class="primary-btn cart-btn cart-btn-right">
+            <span class="icon_loading"></span>
+            Upadate Cart
+            </a>
+            </div>
+            </div>*@
+            <div class="col-lg-6">
+                @*<div class="shoping__continue">
+                <div class="shoping__discount">
+                <h5>Discount Codes</h5>
+                <form action="#">
+                <input type="text" placeholder="Enter your coupon code">
+                <button type="submit" class="site-btn">APPLY COUPON</button>
+                </form>
+                </div>
+                </div>*@
+            </div>
+            @if (Model.Count() == 0)
+            {
+
+            }
+            else
+            {
+                int total = 0;
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <h5>Tổng tiền</h5>
+                        <ul>
+                            <li>
+                                <span>Tổng cộng</span>
+                                @foreach (var item in Model)
+                                {
+                                    var thanhtien = (item.product.Price * item.amount);
+                                    total += (int)thanhtien;
+                                }
+                                @(String.Format("{0:n0}", total)) VND
+
+                            </li>
+                            <li>
+                                <span>Tổng tiền</span> @(String.Format("{0:n0}", total)) VND
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="checkOut" asp-action="MuaHang" class="primary-btn">Thành tiền</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="account" asp-action="Dangky" class="primary-btn">Thành tiền</a>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+@*@section Scripts{
+    <script>
+        $(function() {
+            function loadHeaderCart() {
+                $("#miniCart").load("/AjaxContent/HeaderCart");
+                $("#numberCart").load("/AjaxContent/NumberCart");
+            }
+            $(".cartItem").click(function() {
+                var productid = $(this).attr("data-mahh");
+                var soluong = parseInt($(this).val());
+                $.ajax({
+                    url: @Url.Action("Buy","ShoppingCart"),
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {
+                        productID: productid,
+                        amount: soluong
+                    },
+                    success: function(result) {
+                        if (result.success) {
+                            loadHeaderCart();
+                            window.location = @Url.Action("Buy","ShoppingCart");
+                        }
+                    },
+                    error: function(rs) {
+                        alert("Cập nhật Cart Error");
+                    }
+                });
+            });
+        });
+    </script>
+}*@

@@ -1,0 +1,83 @@
+﻿@model DTN4.Models.Page
+
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<section class="blog-details-hero set-bg" data-setbg="https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/289081142_4116213478636756_4953712912874849543_n.png?_nc_cat=1&ccb=1-7&_nc_sid=730e14&_nc_ohc=2RJP6XDrRWgAX8eK5iI&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT-2rAxDUyCgTwCU7kl4rpnhX-kJ5eAn4breAbO54TZQ0w&oe=62B41554" alt="@Model.Title">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="blog__details__hero__text">
+                    <h2 style="color: black;">@Model.PageName</h2>
+                    <ul>
+                        <li style="color: black;">@Model.PageName</li>
+                        <li style="color: black;">@Model.CreateDate</li>
+                        <li style="color: black;">8 Comments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Hero End -->
+<!-- Blog Details Section Begin -->
+<section class="blog-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    <div class="blog__sidebar__item">
+                        <h4>Khác</h4>
+                        <ul>
+                            <li><a asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
+                            <li><a asp-controller="Blog" asp-action="Index">Blog</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a asp-controller="Home" asp-action="Contact">Liên hệ</a></li>
+
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                <div class="blog__details__text">
+                    <img src="~/image/news/@Model.Thumb" alt="@Model.Title">
+                    <p>@Model.Content</p>
+                </div>
+                <div class="blog__details__content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="blog__details__author">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="blog__details__widget">
+                                <ul>
+                                    <li><span>Categories:</span>Fashion</li>
+                                    <li><span>Tags:</span>Fashion</li>
+                                </ul>
+                                <div class="blog__details__social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

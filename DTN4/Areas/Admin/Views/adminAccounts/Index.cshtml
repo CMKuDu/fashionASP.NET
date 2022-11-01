@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DTN4.Models.Account>
+
+@{
+    ViewData["Title"] = "Danh sách tài khoản quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">DANH SÁCH</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active">Quản lý tài khoản</li>
+    </ol>
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Danh sách tài khoản quản trị viên
+        </div>
+        <div class="dataTable-top">
+            <div class="dataTable-top">
+                <label>
+                    <select class="dataTable-selector" id="idrole" name="idrole" asp-items="ViewBag.QuyenTruyCap">
+                        <option value="0" disabled selected>Chọn quyền truy cập</option>
+                    </select>
+                </label>
+                <div class="dataTable-top">
+                    <label>
+                        <select class="dataTable-selector" id="idstatus" name="idstatus" asp-items="ViewBag.isTrangThai">
+                            <option value="" disabled selected >Chọn Trạng thái</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                        <th>#</th>
+                    <tr>
+                        <th>Họ và Tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        @*<th>Passwork</th>*@
+                        @*<th>Salt</th>*@
+                        @*<th>lastLogin</th>*@
+                        @*<th>createDate</th>*@
+                        <th>Chức vụ</th>
+                        @*<th>Active</th>*@
+                    </tr>
+                </thead>
+                <a class="btn btn-primary" asp-controller="adminAccounts" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm quan tri vien</span></a>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.AccountId</td>
+                                <td>@item.FullName</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                @*<td>@item.Passwork</td>*@
+                                @*<td>@item.Salt</td>*@
+                                @*<td>@item.LastLogin</td>*@
+                                @*<td>@item.CreateDate</td>*@
+                                <td>@item.Role.Description</td>
+                                @*<td>@item.Active</td>*@
+                                <td>
+                                    <a asp-area="Admin" asp-controller="adminAccounts" asp-action="Edit" asp-route-id="@item.AccountId" class="btn btn-secondary">Edit</a> |
+                                    <a asp-area="Admin" asp-controller="adminAccounts" asp-action="Details" asp-route-id="@item.AccountId" class="btn btn-primary">Details</a> |
+                                    <a asp-area="Admin" asp-controller="adminAccounts" asp-action="Delete" asp-route-id="@item.AccountId" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@model DTN4.Models.Role
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<hr />
+<div class="row" style="width: 1000px;display: flex;justify-content: space-around;">
+    <div class="col-md-5">
+        <h1>Create</h1>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" style="font-size:10px; margin:10px 0"/>
+            </div>
+            <div>
+                <a asp-action="Index"class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
