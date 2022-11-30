@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DTN4.Models.Order>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align: center" >Danh sách đơn hàng</h1>
+
+<div style="text-align: center">
+    <h4>Chi tiết hoá đơn</h4>
+    <hr />
+    <div  class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <Table>
+                    <thead style="text-align: center">
+                        <tr>
+                            <th style="text-align: center">@Html.DisplayNameFor(model => model.OrderId)</th>
+                            <th style="text-align: center">@Html.DisplayNameFor(model => model.CustomId)</th>
+                            <th style="text-align: center">@Html.DisplayNameFor(model => model.Money)</th>
+                            <th style="text-align: center">@Html.DisplayNameFor(model => model.OrderDate)</th>
+                            <th style="text-align: center">@Html.DisplayNameFor(model => model.ShipDate)</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.OrderId)</td>
+                                <td>@Html.DisplayFor(model => item.CustomId)</td>
+                                <td>@Html.DisplayFor(model => item.Money)</td>
+                                <td>@Html.DisplayFor(model => item.OrderDate)</td>
+                                <td>@Html.DisplayFor(model => item.ShipDate)</td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </Table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div>
+    
+    <a asp-action="Index">Back to List</a>
+</div>

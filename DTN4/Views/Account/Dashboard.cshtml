@@ -31,7 +31,7 @@
                     <h2 class="name_account">@Model.CustomName</h2>
                     <p>Email: @Model.Email</p>
                     <p>Số điện thoại:@Model.Phone</p>
-                    <p>Địa chỉ: @Model.Address</p>
+                    @*<p>Địa chỉ: @Model.Address</p>*@
 
 
                     <div class="@Model.Location">
@@ -40,17 +40,60 @@
 
                         <p></p>
 
-                        <p> Vietnam</p>
+                        <p>Việt Nam</p>
                         <p></p>
 
-                        <a id="view_address" href="/account/addresses">Xem địa chỉ</a>
+                        @*<a id="view_address" href="/account/addresses">Xem địa chỉ</a>*@
                     </div>
                 </div>
                 <div class="col-xs-12 customer-table-wrap" id="customer_orders">
                     <div class="customer_order customer-table-bg col-12">
 
                         <p><h2>Danh sách sản phẩm</h2></p>
-                        @await Html.PartialAsync("_DonHangPartialView",DanhSachDonHang)
+                        <a href="Account/chitiet/@Model.CustomId">Danh sach don hang</a>
+                        @if (DanhSachDonHang != null && DanhSachDonHang.Count() > 0)
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>San pham</th>
+                                            <th>Ngày Ship hàng</th>
+                                            <th>Trạng thái đơn hàng</th>
+                                            <th>Tổng tiền</th>
+
+                                        </tr>
+                                        @foreach (var item in DanhSachDonHang)
+                                        {
+                                            <tr>
+                                                <td><a class="account-order-id" href="javacript:void(0)">#@item.OrderId</a></td>
+                                                <td>@item.OrderDate</td>
+                                                <td>@item.ShipDate</td>
+                                                <td>@item.TransactStatus.Orders</td>
+                                                <td>@item.Money.("#,##0")VND</td>
+                                                <td>
+                                                    <a class="xemdonhang" href="javacript:void(0)" data-madonhang="@item.OrderId"><span>Xem đơn hàng</span></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div id"recods_table">
+
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                               <td><p>Chưa có đơn hàng</p></td>
+
+                        }
+                        @*@await Html.PartialAsync("_DonHangPartialView",DanhSachDonHang)*@
                     </div>
                 </div>
             </div>
@@ -58,5 +101,28 @@
     </div>
 
 </div>
-</div>
+
+@section Scripts{
+    <sript>
+        $(document).ready(function(){
+            $(".xemdonhang").click(function(){
+                var madonhang = $(this).attr("data-madonhang")
+                $.ajax({
+                    url: "/DonHang/Details",
+                    datatype: "json",
+                    type:"POST",
+                    data: {id: madonhang},
+                    async: true,
+                    sussess: function (results){
+                        $("#records_table").html("");
+                        $("#records_table").html(results);
+                    },
+                    error: function (xhr){
+                        alert('error');
+                    }
+                });
+            });
+        });
+    </sript>
+}
 

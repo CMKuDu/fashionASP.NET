@@ -16,7 +16,8 @@ using System.Threading.Tasks;
 using SessionExtensions = DTN4.Extension.SessionExtensions;
 
 // Persistence session on ASP
-
+//Nguyễn Trần Đẫu
+//1911061170
 namespace DTN4.Controllers
 {
     
@@ -90,6 +91,24 @@ namespace DTN4.Controllers
                 }
             }
             return RedirectToAction("index");
+        }
+        public IActionResult chitiet(int? id)
+        {
+            var chitiet = _context.Orders
+                 
+                 .AsNoTracking()
+                 .Where(x => x.CustomId == id)
+                 
+                 .ToList();
+            if (chitiet == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View(chitiet);
+            }
+           
         }
         [HttpGet]
         public ActionResult Dangky()
@@ -231,7 +250,8 @@ namespace DTN4.Controllers
             HttpContext.Session.Remove("CustomId");
             return RedirectToAction("Index", "Home");
         }
-          
+
+
     }  
 }
 

@@ -42,12 +42,9 @@
                         <th>Họ và Tên</th>
                         <th>Số điện thoại</th>
                         <th>Email</th>
-                        @*<th>Passwork</th>*@
-                        @*<th>Salt</th>*@
-                        @*<th>lastLogin</th>*@
-                        @*<th>createDate</th>*@
+                       
                         <th>Chức vụ</th>
-                        @*<th>Active</th>*@
+                        
                     </tr>
                 </thead>
                 <a class="btn btn-primary" asp-controller="adminAccounts" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm quan tri vien</span></a>
@@ -61,12 +58,9 @@
                                 <td>@item.FullName</td>
                                 <td>@item.Phone</td>
                                 <td>@item.Email</td>
-                                @*<td>@item.Passwork</td>*@
-                                @*<td>@item.Salt</td>*@
-                                @*<td>@item.LastLogin</td>*@
-                                @*<td>@item.CreateDate</td>*@
+                                
                                 <td>@item.Role.Description</td>
-                                @*<td>@item.Active</td>*@
+                                
                                 <td>
                                     <a asp-area="Admin" asp-controller="adminAccounts" asp-action="Edit" asp-route-id="@item.AccountId" class="btn btn-secondary">Edit</a> |
                                     <a asp-area="Admin" asp-controller="adminAccounts" asp-action="Details" asp-route-id="@item.AccountId" class="btn btn-primary">Details</a> |
